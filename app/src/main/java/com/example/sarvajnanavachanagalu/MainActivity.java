@@ -13,6 +13,11 @@ import com.example.sarvajnanavachanagalu.databinding.ActivityMainBinding;
 import com.example.sarvajnanavachanagalu.models.Vachanagalu;
 import com.example.sarvajnanavachanagalu.views.AboutUsActivity;
 import com.example.sarvajnanavachanagalu.views.AuthorActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -46,7 +51,16 @@ public class MainActivity extends AppCompatActivity  {
 //        if (!reply.isEmpty()) {
 //            Toast.makeText(this, reply, Toast.LENGTH_SHORT).show();
 //        }
-//
+
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
+
+
 
 
 
