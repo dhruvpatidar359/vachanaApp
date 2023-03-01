@@ -4,13 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.Toast;
 
 
 import com.example.sarvajnanavachanagalu.adapter.MyAdapter;
 import com.example.sarvajnanavachanagalu.databinding.ActivityMainBinding;
 import com.example.sarvajnanavachanagalu.models.Vachanagalu;
+import com.example.sarvajnanavachanagalu.views.AboutUsActivity;
+import com.example.sarvajnanavachanagalu.views.AuthorActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,6 +25,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity  {
 
     ActivityMainBinding binding;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,17 @@ public class MainActivity extends AppCompatActivity  {
 
         List<Vachanagalu> vachanagaluList = new ArrayList<>();
 
+//        // Get the SharedPreferences object
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//
+//        // Retrieve the value of the "reply" preference
+//        String reply = sharedPreferences.getString("reply", "reply");
+//
+//        // Use the value of the preference as needed
+//        if (!reply.isEmpty()) {
+//            Toast.makeText(this, reply, Toast.LENGTH_SHORT).show();
+//        }
+//
 
 
 
@@ -40,14 +54,33 @@ public class MainActivity extends AppCompatActivity  {
 
             switch (item.getItemId()) {
 
-                case R.id.settings:
-                    Toast.makeText(this, "working", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+                case R.id.about_us:
+                    Intent i = new Intent(this, AboutUsActivity.class);
                     startActivity(i);
+                    break;
 
+
+                case R.id.about_author:
+                    Intent i2 = new Intent(this, AuthorActivity.class);
+                    startActivity(i2);
+                    break;
+
+                case R.id.share:
+                    try {
+                        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                        shareIntent.setType("text/plain");
+                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+                        String shareMessage= "\nLet me recommend you this application\n\n";
+                        shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+                        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+                        startActivity(Intent.createChooser(shareIntent, "choose one"));
+                    } catch(Exception e) {
+                        //e.toString();
+                    }
+                    break;
 
                 default:
-                    Toast.makeText(this, "working", Toast.LENGTH_SHORT).show();
+
                     break;
 
 
@@ -95,6 +128,9 @@ try{
         }
 return json;
     }
+
+
+
 
 
 }
