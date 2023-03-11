@@ -1,5 +1,9 @@
 package com.example.sarvajnanavachanagalu.models;
 
+/*
+* Classes for storing the data in a format
+*
+ */
 
 public class Vachanagalu {
 

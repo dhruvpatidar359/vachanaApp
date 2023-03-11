@@ -30,18 +30,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.vachana_item,parent,false));
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.vachana_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String text = items.get(position).getVachana();
         holder.nameView.setText(Html.fromHtml(text));
         holder.itemView.setOnClickListener(view -> {
 
             Intent i = new Intent(context, ReadActivity.class);
-            i.putExtra("data",text);
+            i.putExtra("data", text);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
 
