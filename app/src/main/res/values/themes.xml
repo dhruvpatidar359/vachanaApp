@@ -30,6 +30,12 @@
     </style>
 
 
+    <style name="MyToolbarStyle" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:fontFamily">@font/kannadaform</item>
+    </style>
 
+    <style name="MyToolbarTheme" parent="Theme.MaterialComponents.Light">
+        <item name="toolbarStyle">@style/MyToolbarStyle</item>
+    </style>
 
 </resources>

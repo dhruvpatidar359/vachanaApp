@@ -13,6 +13,18 @@
         android:id="@+id/about_author"
         android:title="@string/AboutAuthor" />
 
+    <item
+        android:id="@+id/privacy_policy"
+        android:title="@string/privacypolicy" />
+
+    <item
+        android:id="@+id/terms_conditions"
+        android:title="@string/termsconditions" />
+
+    <item
+        android:id="@+id/contact_us"
+        android:title="@string/contactus" />
+
 
 
 </menu>

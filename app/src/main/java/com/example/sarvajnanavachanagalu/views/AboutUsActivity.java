@@ -15,14 +15,5 @@ public class AboutUsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us2);
-
-        AdView adView = findViewById(R.id.adView);
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
     }
 }
